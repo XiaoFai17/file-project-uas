@@ -1,19 +1,18 @@
-# Use the official Python image from the Docker Hub
+# Gunakan image Python
 FROM python:3.9-slim
 
-# Set the working directory
+# Set direktori kerja
 WORKDIR /app
 
-# Copy requirements.txt and install the dependencies
-COPY requirements.txt .
+# Salin file requirements dan aplikasi ke dalam container
+COPY requirements.txt ./
+COPY app.py ./
 
+# Instal dependensi
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application files
-COPY . .
-
-# Expose the port Streamlit runs on
+# Ekspos port yang digunakan aplikasi
 EXPOSE 8501
 
-# Command to run the Streamlit app
+# Perintah untuk menjalankan aplikasi Streamlit
 CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]

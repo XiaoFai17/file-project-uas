@@ -1,7 +1,8 @@
 streamlit
+transformers
+nltk
 scikit-learn
 wordcloud
 matplotlib
 python-docx
-nltk
-pandas
+torch  
