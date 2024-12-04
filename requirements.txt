@@ -1,7 +1,0 @@
-streamlit
-scikit-learn
-wordcloud
-matplotlib
-python-docx
-nltk
-pandas
