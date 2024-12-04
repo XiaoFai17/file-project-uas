@@ -1,10 +1,8 @@
-flask
-transformers
 streamlit
+transformers
+nltk
 scikit-learn
 wordcloud
 matplotlib
 python-docx
-nltk
-pandas
-torch
+torch  # Pastikan PyTorch terinstal, sesuaikan dengan kebutuhan Anda
