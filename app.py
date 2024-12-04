@@ -2,8 +2,6 @@ from transformers import BartTokenizer, BartForConditionalGeneration
 import streamlit as st  
 from sklearn.feature_extraction.text import TfidfVectorizer  
 from sklearn.metrics.pairwise import cosine_similarity  
-from wordcloud import WordCloud  
-import matplotlib.pyplot as plt  
 from docx import Document  
 import re  
 import nltk  
@@ -31,14 +29,6 @@ def clean_text(text):
     stop_words = set(stopwords.words('indonesian'))  
     text = ' '.join(word for word in text.split() if word not in stop_words)  
     return text  
-
-def generate_wordcloud(text, title):  
-    wordcloud = WordCloud(width=400, height=200, background_color='white').generate(text)  
-    plt.figure(figsize=(5, 3))  
-    plt.imshow(wordcloud, interpolation='bilinear')  
-    plt.axis('off')  
-    plt.title(title)  
-    st.pyplot(plt)  
 
 # Streamlit application  
 st.title("Kalkulator Kesamaan Teks dan Ringkasan")  
@@ -87,8 +77,4 @@ if st.button("Hitung Kesamaan"):
         tfidf_matrix = vectorizer.fit_transform([cleaned_summary1, cleaned_summary2])  
         cosine_sim = cosine_similarity(tfidf_matrix[0], tfidf_matrix[1])[0][0]  
 
-        st.success(f"Nilai Kesamaan antara ringkasan teks: {cosine_sim:.2f}")  
-
-        # Generate WordCloud untuk ringkasan  
-        generate_wordcloud(cleaned_summary1, "WordCloud Ringkasan Dokumen 1")  
-        generate_wordcloud(cleaned_summary2, "WordCloud Ringkasan Dokumen 2")
+        st.success(f"Nilai Kesamaan antara ringkasan teks: {cosine_sim:.2f}")
